@@ -1,0 +1,35 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>橙心文章助手隐私政策</title><style>:root{color-scheme:light dark;--bg:#f5f6f1;--surface:#fff;--text:#263126;--muted:#626d60;--line:#dce3d6;--accent:#3c613d}@media(prefers-color-scheme:dark){:root{--bg:#151b16;--surface:#1d261f;--text:#e0e9db;--muted:#a5b49f;--line:#344438;--accent:#b4cfa3}}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.9 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif}main{max-width:820px;margin:40px auto;padding:40px;background:var(--surface);border:1px solid var(--line);border-radius:20px}h1{font-size:30px;line-height:1.35}h2{font-size:20px;margin-top:32px}p,li{overflow-wrap:anywhere}.meta{color:var(--muted);font-size:14px}.draft{padding:12px 16px;border:1px dashed var(--accent);border-radius:8px}a{color:var(--accent)}@media(max-width:600px){main{margin:0;border-radius:0;border:0;padding:24px}}</style></head><body><main>
+
+<h1>橙心文章助手隐私政策</h1><p class="meta">适用扩展版本：0.6.4 · 更新日期：2026 年 10 月 24 日</p>
+<p>本政策说明橙心文章助手如何在你的浏览器内处理文章、图片、来源信息，以及在你主动读取文章、下载图片或导入草稿时如何与相应网站交互。</p>
+<h2>1. 本地文件与工作区</h2>
+<p>你主动选择的 DOCX、Markdown、ZIP、图片及封面，在本浏览器内解析。扩展只读取你选择或拖入的文件和文件夹，不扫描其他目录。标题、Markdown 正文、转换提示、图片 Blob、来源地址与作者、封面和目标平台选择保存在扩展自己的本机 IndexedDB。原始 DOCX/ZIP 文件不额外留存。主题偏好保存在本机 localStorage，旧版原稿可能从 chrome.storage.local 迁移。</p>
+<p>这些数据不使用 Chrome 账号同步，不上传开发者服务器。任务状态保留在当前助手页面内存，刷新后不会自动续传。你可以导出本机图文包备份；卸载扩展通常会删除该扩展的本机数据。导入另一篇文章会替换当前工作区，建议提前导出需要保留的内容。</p>
+<h2>2. 读取公众号文章与网络图片</h2>
+<p>只有你主动输入公众号链接并点击读取，扩展才在对应 mp.weixin.qq.com 页面读取标题、公开正文、封面、来源信息和图片地址。公众号页面使用同一浏览器中现有的正常会话；需要验证、已删除或无法读取时，扩展提示你检查，不绕过验证。视频、音频和小程序不会伪装成已导入的媒体。</p>
+<p>远程图片只在取得相关域名访问权限后下载。扩展自己的图片下载请求使用 HTTPS，不携带 Cookie 或 Referrer，不跟随重定向，并拒绝本地网络地址。来源网站及图片服务仍可能接收到你的 IP 地址、请求资源和常规网络信息。下载成功的图片可保存在本机工作区。</p>
+<h2>3. 向你选择的平台导入</h2>
+<p>你点击导入后，扩展按你勾选的平台处理文章、正文图片及必要封面。正文中你主动提供的作者信息或其他个人信息，也会随正文交给该平台。扩展不自动公开发布、不群发、不删除已有草稿。你需要具备相应平台账号资格，并检查最终结果后手动发布。</p>
+<ul><li><strong>公众号：</strong>向 mp.weixin.qq.com 上传封面、正文图片并创建或更新本次云端草稿；相关素材由平台图片服务提供。随后尝试回读预览，无法核对时提示待检查。</li>
+<li><strong>知乎：</strong>在 zhuanlan.zhihu.com 创建并保存本次草稿，使用知乎接口及图片服务（包括 api.zhihu.com、zhihu-pics-upload.zhimg.com）处理图片及结果核对。</li>
+<li><strong>今日头条：</strong>在 mp.toutiao.com 使用平台原生客户端上传图片、保存本次云端草稿，并尝试读取同一篇草稿进行核对；图片由平台返回的素材/CDN 服务提供。</li>
+<li><strong>微博：</strong>向 picupload.weibo.com 上传正文图片，随后在 card.weibo.com 创建并保存完整图文草稿。上传请求使用该平台已有登录会话；图片由 sinaimg.cn 等平台图片服务提供。之后重新打开本次草稿核对。</li>
+<li><strong>小红书：</strong>在 creator.xiaohongshu.com 获取短期上传许可，向经过校验的 xiaohongshu.com 或 xhscdn.com 上传服务发送图片，再写入当前浏览器、当前账号的网站长文本地草稿库。这不是云端草稿；清理该网站数据可能删除草稿。</li>
+<li><strong>抖音：</strong>在 creator.douyin.com 调用已加载的原生长文编辑器，将文字和图片交给编辑器及其平台原生上传服务处理。填入编辑器不等于保存云端草稿，你必须手动检查并保存。交给原生上传器的上传在取消助手任务后仍可能继续。</li>
+<li><strong>X：</strong>在 x.com 创建和保存长文章草稿，并通过 upload.x.com 上传图片。必要时将 abs.twimg.com 的当前公开静态资源作为文本读取，仅提取草稿操作元数据，不执行下载的脚本。功能受账号资格和平台入口权限限制。</li></ul>
+<p>数据会被发送或写入你主动选择的平台及其必要图片服务，其后续处理适用各平台自己的隐私政策。本工具为独立第三方工具，与这些平台不存在官方隶属或授权关系。</p>
+<h2>4. 会话与短期上传凭据</h2>
+<p>扩展使用同一个 Chrome 用户资料中已有的平台正常登录状态、页面原生请求客户端或编辑器，并在需要时使用页面会话对应的 CSRF 校验值、token 或短期上传许可。部分上传许可会在扩展当前任务内存中短暂使用，只用于相应平台的本次上传；不会写入本机文章工作区、导出图文包或诊断文件，不发送开发者服务器。扩展不要求你输入平台密码、导出 Cookie 文件或提供 API 密钥，不使用 Chrome cookies 权限扫描浏览器 Cookie。</p>
+<h2>5. 浏览器权限</h2>
+<p><strong>storage：</strong>读取并迁移旧版原稿。<strong>scripting：</strong>在用户主动要求操作的公众号原文或目标平台页面内运行随扩展提供的函数，读取指定内容、调用原生编辑器及核对本次草稿。</p>
+<p><strong>declarativeNetRequestWithHostAccess：</strong>微博、小红书图片上传时，短暂设置目标图床所需的 Origin/Referer。规则仅匹配本扩展发起的请求和已校验上传域名，不修改普通网页浏览请求，并在操作结束、失败或取消后移除。</p>
+<p>X 及相关上传/静态资源域名属于已有必需主机权限。其他平台和远程图片在用户点击读取/导入时，按本次需要的 HTTPS 域名申请可选权限。可选权限声明中的 https://*/* 用于允许申请事先未知的图片域名，并不表示安装后自动获得所有网站访问权。你可以拒绝授权，或在 Chrome 的扩展管理页面撤销权限；相关功能将停止或要求重新授权。</p>
+<h2>6. 诊断、分析与数据用途</h2>
+<p>仅在你主动点击导出时，生成本地 JSON 诊断，包括扩展/浏览器版本、目标平台、处理阶段、图片计数、核对状态、时间、请求阶段、HTTP 状态、预定义或脱敏错误说明及结构统计。诊断不包含文章标题正文、图片字节、Cookie、请求头或上传密钥，不自动发送开发者。你自行向客服提供诊断时，请先检查文件内容。</p>
+<p>不含广告、行为分析或开发者遥测，不出售用户数据，不用于个性化广告、信用或借贷判断，不跟踪无关网站的浏览历史。只为说明的图文整理、用户主动要求的导入及必要诊断处理数据。转换与校验库随扩展提供，不下载并执行额外远程代码。</p>
+<h2>7. 取消、删除与第三方数据</h2>
+<p>取消会停止助手的等待和后续操作，但已发送到平台服务器的写入不保证撤回。扩展没有自动删除平台草稿的功能。需要删除平台已保存的文章、图片或草稿时，请在相应平台操作；本机扩展数据与各平台数据互不替代。</p>
+<h2>8. 政策更新与联系</h2>
+<p>功能或数据处理方式变化时，将更新此政策；如果用途发生实质变化，会按适用要求提供提示或征得同意。</p>
+<p>开发者名称：橙心<br>隐私与支持联系邮箱：<a href="mailto:darkzhicheng@gmail.com">darkzhicheng@gmail.com</a></p>
+</main></body></html>
